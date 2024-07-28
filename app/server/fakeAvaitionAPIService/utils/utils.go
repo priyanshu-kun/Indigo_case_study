@@ -2,7 +2,6 @@ package utils
 
 import (
 	"context"
-	"log"
 	"math/rand"
 	"server/fakeAvaitionAPIService/database"
 	"server/fakeAvaitionAPIService/logger"
@@ -41,12 +40,12 @@ func SeedDatabase() error {
 		logger.ServerLogger.Println(flight)
 		_, err := collection.InsertOne(context.Background(), flight)
 		if err != nil {
-			log.Printf("Failed to insert flight %s: %v", flight.FlightID, err)
+			logger.ServerLogger.Printf("[ERROR] Failed to insert flight %s: %v", flight.FlightID, err)
 			return err
 		}
 	}
 
-	log.Println("Database seeded successfully")
+	logger.ServerLogger.Println("[INFO] Database seeded successfully")
 	return nil
 }
 
@@ -64,18 +63,18 @@ func UpdateRandomFlight() {
 
 	cursor, err := collection.Find(context.Background(), bson.M{})
 	if err != nil {
-		logger.ServerLogger.Printf("Error fetching flights: %v", err)
+		logger.ServerLogger.Printf("[ERROR] fetching flights: %v", err)
 		return
 	}
 	defer cursor.Close(context.Background())
 
 	if err = cursor.All(context.Background(), &results); err != nil {
-		logger.ServerLogger.Printf("Error decoding flights: %v", err)
+		logger.ServerLogger.Printf("[ERROR] decoding flights: %v", err)
 		return
 	}
 
 	if len(results) == 0 {
-		logger.ServerLogger.Println("No flights found")
+		logger.ServerLogger.Println("[ERROR] No flights found")
 		return
 	}
 
@@ -112,11 +111,11 @@ func UpdateRandomFlight() {
 	filter := bson.M{"_id": selectedFlight.ID}
 	_, err = collection.UpdateOne(context.Background(), filter, update, options.Update().SetUpsert(false))
 	if err != nil {
-		logger.ServerLogger.Printf("Error updating flight: %v", err)
+		logger.ServerLogger.Printf("[ERROR] updating flight: %v", err)
 		return
 	}
 
-	logger.ServerLogger.Printf("Updated flight %v: %s = %v", selectedFlight.ID.Hex(), selectedProperty, newValue)
+	logger.ServerLogger.Printf("[INFO] Updated flight %v: %s = %v", selectedFlight.ID.Hex(), selectedProperty, newValue)
 }
 
 func UpdateFlightStatusPeriodically(deltaTime time.Duration) {

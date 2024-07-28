@@ -11,6 +11,7 @@ import (
 	"server/fakeAvaitionAPIService/logger"
 	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/nicholasjackson/env"
 )
@@ -31,7 +32,7 @@ func (m *Main) initServer() error {
 	}
 
 	if err := database.ConnectDB(*mongoURI); err != nil {
-		logger.ServerLogger.Fatalf("Error connecting to MongoDB: %s", err)
+		logger.ServerLogger.Fatalf("[ERROR] connecting to MongoDB: %s", err)
 	}
 
 	m.router = gin.New()
@@ -40,6 +41,14 @@ func (m *Main) initServer() error {
 	gin.DefaultErrorWriter = logger.GinLogWriter
 
 	m.router.Use(gin.LoggerWithWriter(logger.GinLogWriter), gin.RecoveryWithWriter(logger.GinLogWriter))
+	m.router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowMethods:     []string{"PUT", "PATCH", "GET", "POST", "DELETE"},
+		AllowHeaders:     []string{"Origin"},
+		ExposeHeaders:    []string{"Content-Length"},
+		AllowCredentials: true,
+		MaxAge:           12 * time.Hour,
+	}))
 
 	m.server = &http.Server{
 		Addr:         *bindAddress,
@@ -59,11 +68,11 @@ func main() {
 	m := Main{}
 
 	if err := m.initServer(); err != nil {
-		log.Fatalf("Error initializing server: %s", err)
+		log.Fatalf("[ERROR] initializing server: %s", err)
 	}
 
 	m.router.GET("/", func(c *gin.Context) {
-		c.String(http.StatusOK, "Hello, World!")
+		c.String(http.StatusOK, "[DEBUG] Hello, World!")
 	})
 
 	m.router.GET("/initdb", handlers.SeedDatabaseHandler)
@@ -75,10 +84,10 @@ func main() {
 	m.router.GET("/fetch_flight", handlers.FetchFlight)
 
 	go func() {
-		logger.ServerLogger.Println("Starting server on port", *bindAddress)
+		logger.ServerLogger.Println("[INFO] Starting server on port", *bindAddress)
 
 		if err := m.server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			logger.ServerLogger.Fatalf("Error starting server: %s", err)
+			logger.ServerLogger.Fatalf("[ERROR] starting server: %s", err)
 		}
 	}()
 
@@ -87,13 +96,13 @@ func main() {
 	signal.Notify(c, os.Kill)
 
 	sig := <-c
-	logger.ServerLogger.Println("Got signal:", sig)
+	logger.ServerLogger.Println("[INFO] Got signal:", sig)
 
 	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
 	if err := m.server.Shutdown(ctx); err != nil {
-		logger.ServerLogger.Fatalf("Server forced to shutdown: %s", err)
+		logger.ServerLogger.Fatalf("[INFO] Server forced to shutdown: %s", err)
 	}
 
-	logger.ServerLogger.Println("Server exiting")
+	logger.ServerLogger.Println("[INFO] Server exiting")
 }

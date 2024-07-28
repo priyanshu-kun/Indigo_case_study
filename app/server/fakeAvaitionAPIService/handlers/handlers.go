@@ -26,7 +26,7 @@ func SeedDatabaseHandler(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Database seeded successfully"})
+	c.JSON(http.StatusOK, gin.H{"message": "[INFO] Database seeded successfully"})
 }
 
 func FetchFlight(c *gin.Context) {
@@ -35,7 +35,7 @@ func FetchFlight(c *gin.Context) {
 	var result models.Flight
 
 	if flightId == "" && flightName == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Missing _flight_id and _flight_name parameter"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "[ERROR] Missing _flight_id and _flight_name parameter"})
 		return
 	}
 
@@ -51,12 +51,12 @@ func FetchFlight(c *gin.Context) {
 
 	err := collection.FindOne(context.Background(), filter).Decode(&result)
 	if err != nil {
-		logger.ServerLogger.Printf("Error fetching flights: %v", err)
+		logger.ServerLogger.Printf("[ERROR] fetching flights: %v", err)
 		if err == mongo.ErrNoDocuments {
-			c.JSON(http.StatusNotFound, gin.H{"error": "Flight not found"})
+			c.JSON(http.StatusNotFound, gin.H{"error": "[ERROR] Flight not found"})
 			return
 		}
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Error fetching flight"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "[ERROR] fetching flight"})
 		return
 	}
 
@@ -79,14 +79,14 @@ func UpdateStatus(c *gin.Context) {
 	logger.ServerLogger.Println(enableUpdation, deltaTime)
 
 	if enableUpdation == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Missing *enableUpdation parameter"})
+		c.JSON(http.StatusBadRequest, gin.H{"error": "[ERROR] Missing *enableUpdation parameter"})
 		return
 	}
 
 	enable, err := strconv.ParseBool(enableUpdation)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error":          "Invalid value for *enableUpdation. Must be 'true' or 'false'",
+			"error":          "[ERROR] Invalid value for *enableUpdation. Must be 'true' or 'false'",
 			"provided_value": enableUpdation,
 		})
 		return
@@ -94,33 +94,33 @@ func UpdateStatus(c *gin.Context) {
 
 	if enable {
 		if utils.IsUpdating() {
-			c.JSON(http.StatusOK, gin.H{"message": "Update process already running"})
+			c.JSON(http.StatusOK, gin.H{"message": "[INFO] Update process already running"})
 			return
 		}
 
 		if deltaTime == "" {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Missing _delta_time parameter"})
+			c.JSON(http.StatusBadRequest, gin.H{"error": "[ERROR] Missing _delta_time parameter"})
 			return
 		}
 
 		delta, err := time.ParseDuration(deltaTime)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{
-				"error":          "Invalid value for _delta_time. Use a valid duration string (e.g., '5s', '1m', '2h')",
+				"error":          "[ERROR] Invalid value for _delta_time. Use a valid duration string (e.g., '5s', '1m', '2h')",
 				"provided_value": deltaTime,
 			})
 			return
 		}
 
 		utils.UpdateFlightStatusPeriodically(delta)
-		c.JSON(http.StatusOK, gin.H{"message": "Update process started"})
+		c.JSON(http.StatusOK, gin.H{"message": "[INFO] Update process started"})
 	} else {
 		if !utils.IsUpdating() {
-			c.JSON(http.StatusOK, gin.H{"message": "Update process is not running"})
+			c.JSON(http.StatusOK, gin.H{"message": "[INFO] Update process is not running"})
 			return
 		}
 		utils.StopUpdateProcess()
-		c.JSON(http.StatusOK, gin.H{"message": "Update process stopped"})
+		c.JSON(http.StatusOK, gin.H{"message": "[INFO] Update process stopped"})
 	}
 }
 
@@ -130,15 +130,15 @@ func FetchAllFlights(c *gin.Context) {
 
 	cursor, err := collection.Find(context.Background(), bson.M{})
 	if err != nil {
-		logger.ServerLogger.Printf("Error fetching flights: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch flights"})
+		logger.ServerLogger.Printf("[ERROR] fetching flights: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "[ERROR] Failed to fetch flights"})
 		return
 	}
 	defer cursor.Close(context.Background())
 
 	if err = cursor.All(context.Background(), &results); err != nil {
-		logger.ServerLogger.Printf("Error decoding flights: %v", err)
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to decode flights"})
+		logger.ServerLogger.Printf("[ERROR] decoding flights: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "[ERROR] Failed to decode flights"})
 		return
 	}
 

@@ -29,7 +29,7 @@ func ConnectDB(uri string) error {
 		Client, connectErr = mongo.Connect(ctx, clientOptions)
 		if connectErr != nil {
 			errorChan <- err
-			logger.ServerLogger.Printf("Failed to connect to MongoDB: %v", connectErr)
+			logger.ServerLogger.Printf("[ERROR] Failed to connect to MongoDB: %v", connectErr)
 		}
 		errorChan <- nil
 	}()
@@ -45,7 +45,7 @@ func ConnectDB(uri string) error {
 			pingErr = Client.Ping(ctx, nil)
 			if pingErr != nil {
 				errorChan <- pingErr
-				logger.ServerLogger.Printf("Failed to ping MongoDB: %v", pingErr)
+				logger.ServerLogger.Printf("[ERROR] Failed to ping MongoDB: %v", pingErr)
 			}
 			errorChan <- nil
 		}
@@ -67,7 +67,7 @@ func ConnectDB(uri string) error {
 		}
 	}
 
-	logger.ServerLogger.Println("Connected to MongoDB")
+	logger.ServerLogger.Println("[INFO] Connected to MongoDB")
 	return nil
 }
 
