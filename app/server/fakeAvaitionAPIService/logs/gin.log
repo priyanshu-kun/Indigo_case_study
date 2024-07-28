@@ -1,0 +1,115 @@
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 22:42:00 | 200 |     212.919µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=0x222&_flight_name=AirIndia"
+[GIN] 2024/07/28 - 22:42:00 | 404 |       1.308µs |       127.0.0.1 | GET      "/favicon.ico"
+[GIN] 2024/07/28 - 22:44:31 | 200 |      57.291µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=0x222&_flight_name=AirIndia"
+[GIN] 2024/07/28 - 22:55:23 | 200 |      87.918µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=0x222&_flight_name=AirIndia"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 22:55:34 | 404 |     569.125µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=0x222&_flight_name=AirIndia"
+[GIN] 2024/07/28 - 22:55:50 | 404 |    1.529801ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=0x222&_flight_name=Indigo"
+[GIN] 2024/07/28 - 22:56:36 | 404 |    2.042853ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN] 2024/07/28 - 22:56:36 | 404 |       1.664µs |       127.0.0.1 | GET      "/favicon.ico"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 22:59:59 | 404 |     621.417µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:04:54 | 200 |     655.499µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:05:51 | 200 |    2.027457ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:07:26 | 200 |    1.500022ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:08:52 | 200 |     966.994µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:10:35 | 400 |      64.833µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2346"
+[GIN] 2024/07/28 - 23:11:05 | 404 |    1.621023ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2346&_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:12:02 | 404 |    1.037387ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:13:02 | 404 |     593.027µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:14:25 | 404 |     604.209µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2344&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:17:05 | 200 |    1.323135ms |       127.0.0.1 | GET      "/flights"
+[GIN] 2024/07/28 - 23:17:08 | 200 |   18.278816ms |       127.0.0.1 | GET      "/initdb"
+[GIN] 2024/07/28 - 23:17:33 | 200 |     101.382µs |       127.0.0.1 | GET      "/update_flight_status?_enableUpdation=true&_delta_time=1m"
+[GIN] 2024/07/28 - 23:18:02 | 200 |    1.605159ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341&_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:20:49 | 404 |     620.408µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2346&_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:21:02 | 200 |      432.44µs |       127.0.0.1 | GET      "/flights"
+[GIN] 2024/07/28 - 23:21:05 | 200 |    1.080495ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341&_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:21:11 | 200 |     527.623µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341&_flight_name=AirIndia"
+[GIN] 2024/07/28 - 23:21:24 | 200 |    1.439099ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2342&_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:21:34 | 404 |    1.298728ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2346&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:23:32 | 404 |      943.77µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2346&_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:23:43 | 200 |     912.721µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341&_flight_name=Indigo"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:23:59 | 404 |     695.351µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341&_flight_name=AirIndia"
+[GIN] 2024/07/28 - 23:24:04 | 200 |    1.543525ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341&_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:25:02 | 200 |    1.171589ms |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341"
+[GIN] 2024/07/28 - 23:25:20 | 200 |    1.192163ms |       127.0.0.1 | GET      "/fetch_flight?_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:25:27 | 404 |    1.318168ms |       127.0.0.1 | GET      "/fetch_flight?_flight_name=AirIndia"
+[GIN] 2024/07/28 - 23:26:20 | 200 |     356.905µs |       127.0.0.1 | GET      "/fetch_flight?_flight_name=Indigo"
+[GIN] 2024/07/28 - 23:26:46 | 200 |    1.175657ms |       127.0.0.1 | GET      "/fetch_flight?_flight_name=Indigo&&_flight_id=6E-2341"
+[GIN] 2024/07/28 - 23:26:54 | 404 |     356.829µs |       127.0.0.1 | GET      "/fetch_flight?_flight_name=Indigo&&_flight_id=6E-2349"
+[GIN] 2024/07/28 - 23:27:00 | 200 |       8.034µs |       127.0.0.1 | GET      "/"
+[GIN] 2024/07/28 - 23:28:20 | 200 |      48.325µs |       127.0.0.1 | GET      "/update_flight_status?_enableUpdation=true&_delta_time=10s"
+[GIN] 2024/07/28 - 23:30:10 | 200 |      57.475µs |       127.0.0.1 | GET      "/update_flight_status?_enableUpdation=false&_delta_time=10s"
+[GIN-debug] GET    /                         --> main.main.func1 (3 handlers)
+[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (3 handlers)
+[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (3 handlers)
+[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (3 handlers)
+[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (3 handlers)
+[GIN] 2024/07/28 - 23:34:44 | 200 |     158.404µs |       127.0.0.1 | GET      "/update_flight_status?_enableUpdation=false&_delta_time=10s"
+[GIN] 2024/07/28 - 23:35:00 | 200 |      78.582µs |       127.0.0.1 | GET      "/update_flight_status?_enableUpdation=true&_delta_time=10s"
+[GIN] 2024/07/28 - 23:36:59 | 200 |     157.578µs |       127.0.0.1 | GET      "/update_flight_status?_enableUpdation=true&_delta_time=10s"
+[GIN] 2024/07/28 - 23:37:17 | 200 |     136.469µs |       127.0.0.1 | GET      "/update_flight_status?_enableUpdation=false&_delta_time=10s"
