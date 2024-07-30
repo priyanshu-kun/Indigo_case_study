@@ -4,7 +4,7 @@ import { Button, Checkbox, Form, Input, Slider } from 'antd';
 
 const SubscribeAFlight = () => {
 
-    const [] = useState({})
+    const [payload, setPayload] = useState({flight_id: "", email: ""})
 
     const onFinish = (values) => {
         console.log('Success:', values);
@@ -12,6 +12,12 @@ const SubscribeAFlight = () => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
+
+    const handleInputChange = (e) => {
+        setPayload({...payload, [e.target.name]: e.target.email})
+    }
+
+    console.log(payload)
 
 
     return (
@@ -44,7 +50,7 @@ const SubscribeAFlight = () => {
                     },
                 ]}
             >
-                <Input onChange={handleInputChange} />
+                <Input onChange={handleInputChange} value={payload.flight_id} />
             </Form.Item>
 
             <Form.Item
@@ -57,7 +63,7 @@ const SubscribeAFlight = () => {
                     },
                 ]}
             >
-                <Input onChange={handleInputChange} />
+                <Input onChange={handleInputChange} value={payload.email} />
             </Form.Item>
 
             <Form.Item
