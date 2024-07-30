@@ -42,7 +42,7 @@ func (m *Main) initServer() error {
 
 	m.router.Use(gin.LoggerWithWriter(logger.GinLogWriter), gin.RecoveryWithWriter(logger.GinLogWriter))
 	m.router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowOrigins:     []string{"http://localhost:3000", "http://localhost:5173"},
 		AllowMethods:     []string{"PUT", "PATCH", "GET", "POST", "DELETE"},
 		AllowHeaders:     []string{"Origin"},
 		ExposeHeaders:    []string{"Content-Length"},
