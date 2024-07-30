@@ -83,6 +83,8 @@ func main() {
 
 	m.router.GET("/fetch_flight", handlers.FetchFlight)
 
+	m.router.POST("/subscribe_to_flight", handlers.SubscribeToFlight)
+
 	go func() {
 		logger.ServerLogger.Println("[INFO] Starting server on port", *bindAddress)
 

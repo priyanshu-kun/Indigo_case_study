@@ -5,6 +5,8 @@ const cors = require("cors");
 require("dotenv").config();
 const routes = require("./routes");
  require("./utils/logger")();
+ const { init } = require('./utils/admin')
+ const { consume } = require('./utils/consumer')
 
 const app = express();
 
@@ -15,15 +17,16 @@ db.once("open", function () {
   console.log("[INFO] db connected!");
 });
 
-// * Cors
+// init kafka
+init();
+consume();
+
 app.use(cors());
 
-// * Body Parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("short"));
 
-// * Api routes
 app.use("/api", routes);
 
 app.get("/", (req, res) => {

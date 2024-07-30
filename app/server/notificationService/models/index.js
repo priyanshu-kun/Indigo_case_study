@@ -5,6 +5,6 @@ const db = {};
 
 db.mongoose = mongoose;
 
-db.userType = require("./user-type");
+db.notifications = require("./notification-type/index");
 
 module.exports = db;

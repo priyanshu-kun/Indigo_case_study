@@ -20,6 +20,12 @@ const (
 	COLLECTION = "flights"
 )
 
+type Flight struct {
+	FlightID string `json:"flight_id"`
+	Email    string `json:"email"`
+	Method   string `json:"method"`
+}
+
 func SeedDatabaseHandler(c *gin.Context) {
 	if err := utils.SeedDatabase(); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -122,6 +128,26 @@ func UpdateStatus(c *gin.Context) {
 		utils.StopUpdateProcess()
 		c.JSON(http.StatusOK, gin.H{"message": "[INFO] Update process stopped"})
 	}
+}
+
+func SubscribeToFlight(c *gin.Context) {
+	var newFlight Flight
+
+	if err := c.ShouldBindJSON(&newFlight); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request body"})
+		return
+	}
+
+	collection := database.GetCollection("aviation_db", "subscribed_users")
+	_, err := collection.InsertOne(context.Background(), bson.M{"flight_id": newFlight.FlightID, "email": newFlight.Email, "method": newFlight.Method})
+	if err != nil {
+		logger.ServerLogger.Printf("[ERROR] fetching flights: %v", err)
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "[ERROR] Failed to fetch flights"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": newFlight})
+
 }
 
 func FetchAllFlights(c *gin.Context) {
