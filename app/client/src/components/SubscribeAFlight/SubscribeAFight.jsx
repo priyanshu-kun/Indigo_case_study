@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
-import { Button, Checkbox, Form, Input, Slider } from 'antd';
+import { Button, Checkbox, Form, Input, Select, Slider } from 'antd';
+import useSubscribeFlight from '../../hook/useSubscibe';
 
 
-const SubscribeAFlight = () => {
+const SubscribeAFlight = ({ isFlightLoading, flightData }) => {
 
-    const [payload, setPayload] = useState({flight_id: "", email: ""})
+    const [flight_id, setFlight_id] = useState("")
+    const [email, setEmail] = useState("")
+    const [allowUpdation, setAllowUpdation] = useState(true)
+    const [seconds, setSeconds] = useState(5)
+
+    const { subscribe, data, loading } = useSubscribeFlight({ flight_id, email, allowUpdation, seconds })
 
     const onFinish = (values) => {
-        console.log('Success:', values);
+        const newPaylod = {
+            ...values,
+            seconds,
+        }
+        subscribe(newPaylod)
     };
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
 
-    const handleInputChange = (e) => {
-        setPayload({...payload, [e.target.name]: e.target.email})
-    }
-
-    console.log(payload)
-
+    const flight_options = flightData?.message?.map((msg, idx) => (
+        { value: msg?.flight_id, label: msg?.flight_id }
+    ))
 
     return (
         <Form
@@ -37,22 +41,34 @@ const SubscribeAFlight = () => {
                 remember: true,
             }}
             onFinish={onFinish}
-            onFinishFailed={onFinishFailed}
             autoComplete="off"
         >
+
             <Form.Item
                 label="Flight Id"
                 name="flight_id"
                 rules={[
                     {
                         required: true,
-                        message: 'Please input your Flight Id',
+                        message: 'Please input your flight id',
                     },
                 ]}
             >
-                <Input onChange={handleInputChange} value={payload.flight_id} />
-            </Form.Item>
 
+            <Select
+                showSearch
+                style={{
+                }}
+                onChange={(e) => setFlight_id(e)}
+                placeholder="Select Flight Id"
+                filterOption={(input, option) =>
+                    (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
+                }
+                options={flight_options ? [...flight_options] : []}
+            />
+
+
+            </Form.Item>
             <Form.Item
                 label="Email"
                 name="email"
@@ -63,7 +79,7 @@ const SubscribeAFlight = () => {
                     },
                 ]}
             >
-                <Input onChange={handleInputChange} value={payload.email} />
+                <Input onChange={(e) => setEmail(e.target.value)} value={email} />
             </Form.Item>
 
             <Form.Item
@@ -74,13 +90,13 @@ const SubscribeAFlight = () => {
                     span: 16,
                 }}
             >
-                <Checkbox>Enable Notifications</Checkbox>
+                <Checkbox value={allowUpdation} onChange={(e) => setAllowUpdation(e.target.checked)}>Enable Notifications</Checkbox>
             </Form.Item>
 
 
             <div >
-            <span>Please use slider to set the rate of change in status updation per/sec</span>
-            <Slider defaultValue={30} min={5} max={600} disabled={false} />
+                <span>Please use slider to set the rate of change in status updation per/sec</span>
+                <Slider onChange={(e) => setSeconds(e)} defaultValue={30} min={5} max={600} disabled={false} />
             </div>
 
             <Form.Item

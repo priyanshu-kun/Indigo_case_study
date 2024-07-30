@@ -38,9 +38,9 @@ const App = () => {
       case '1':
         return <Home isFlightLoading={isFlightLoading} flightData={flightData} />;
       case '2':
-        return <SubscribeAFlight />;
+        return <SubscribeAFlight isFlightLoading={isFlightLoading} flightData={flightData} />;
       default:
-        return <div>Home Content</div>;
+        return <div>404</div>;
     }
   };
 
