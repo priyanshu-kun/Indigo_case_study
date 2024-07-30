@@ -18,3 +18,9 @@ type Flight struct {
 	ActualDeparture    *time.Time         `bson:"actual_departure,omitempty" json:"actual_departure,omitempty"`
 	ActualArrival      *time.Time         `bson:"actual_arrival,omitempty" json:"actual_arrival,omitempty"`
 }
+
+type SubscribeUsers struct {
+	FlightID string `bson:"flight_id" json:"flight_id"`
+	Email    string `bson:"email" json:"email"`
+	Method   string `bson:"method" json:"method"`
+}

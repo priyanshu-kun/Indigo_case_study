@@ -42,7 +42,7 @@ func (m *Main) initServer() error {
 
 	m.router.Use(gin.LoggerWithWriter(logger.GinLogWriter), gin.RecoveryWithWriter(logger.GinLogWriter))
 	m.router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://localhost:3000"},
+		AllowOrigins:     []string{"http://localhost:3000", "http://localhost:5173"},
 		AllowMethods:     []string{"PUT", "PATCH", "GET", "POST", "DELETE"},
 		AllowHeaders:     []string{"Origin"},
 		ExposeHeaders:    []string{"Content-Length"},
@@ -82,6 +82,8 @@ func main() {
 	m.router.GET("/update_flight_status", handlers.UpdateStatus)
 
 	m.router.GET("/fetch_flight", handlers.FetchFlight)
+
+	m.router.POST("/subscribe_to_flight", handlers.SubscribeToFlight)
 
 	go func() {
 		logger.ServerLogger.Println("[INFO] Starting server on port", *bindAddress)

@@ -3,3 +3,7 @@
 .env
 
 package-lock.json
+
+serviceAccountKey.json
+
+/logs

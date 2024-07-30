@@ -1,6 +1,0 @@
-fake aviation api service 2024/07/29 00:48:31 [INFO] Connected to MongoDB
-fake aviation api service 2024/07/29 00:48:31 [INFO] Starting server on port :8080
-fake aviation api service 2024/07/29 00:48:59 false 10s
-fake aviation api service 2024/07/29 00:49:16 [ERROR] fetching flights: mongo: no documents in result
-fake aviation api service 2024/07/29 00:50:24 [INFO] Got signal: interrupt
-fake aviation api service 2024/07/29 00:50:24 [INFO] Server exiting

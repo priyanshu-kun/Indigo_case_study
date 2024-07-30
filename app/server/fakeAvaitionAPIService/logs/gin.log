@@ -1,9 +1,0 @@
-[GIN-debug] GET    /                         --> main.main.func1 (4 handlers)
-[GIN-debug] GET    /initdb                   --> server/fakeAvaitionAPIService/handlers.SeedDatabaseHandler (4 handlers)
-[GIN-debug] GET    /flights                  --> server/fakeAvaitionAPIService/handlers.FetchAllFlights (4 handlers)
-[GIN-debug] GET    /update_flight_status     --> server/fakeAvaitionAPIService/handlers.UpdateStatus (4 handlers)
-[GIN-debug] GET    /fetch_flight             --> server/fakeAvaitionAPIService/handlers.FetchFlight (4 handlers)
-[GIN] 2024/07/29 - 00:48:59 | 200 |     121.585µs |       127.0.0.1 | GET      "/update_flight_status?_enableUpdation=false&_delta_time=10s"
-[GIN] 2024/07/29 - 00:48:59 | 404 |       1.062µs |       127.0.0.1 | GET      "/favicon.ico"
-[GIN] 2024/07/29 - 00:49:11 | 200 |     779.337µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341&_flight_name=Indigo"
-[GIN] 2024/07/29 - 00:49:16 | 404 |     937.828µs |       127.0.0.1 | GET      "/fetch_flight?_flight_id=6E-2341&_flight_name=AirIndia"
