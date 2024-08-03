@@ -1,0 +1,6 @@
+Connection Username: hack-to-hire
+Connection Password: hack-to-hire
+
+db_name: aviation_db
+
+Admin_password: priyanshu-kun-mongdb

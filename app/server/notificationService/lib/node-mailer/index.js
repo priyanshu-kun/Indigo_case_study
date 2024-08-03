@@ -1,5 +1,6 @@
 const nodemailer = require("nodemailer");
 const handlebars = require("handlebars");
+const {isValidEmail} = require('../../utils/isValidMail')
 const fs = require("fs");
 const path = require("path");
 
@@ -28,14 +29,15 @@ const readHTMLFile = function (path, callback) {
 };
 
 const send_email = (payload) => {
-    console.log("[DEBUG] ", payload?.recipient)
     const {flight_id, recipient, message, departure_gate, arrival_gate, scheduled_departure, scheduled_arrival, reason} = payload;
     if (!isValidEmail(recipient)) {
+        console.log(isValidEmail(recipient))
         return;
     }
     readHTMLFile(
         path.join(__dirname, `../../public/email-templates/testing.html`),
         function (err, html) {
+
             var template = handlebars.compile(html);
             var replacements = {
                 username: "Indigo User",
@@ -49,10 +51,11 @@ const send_email = (payload) => {
             };
             var htmlToSend = template(replacements);
 
+
             const mailOptions = {
                 from: `Testing for Indigo Case Study 👻 <open.source.yt555@gmail.com>`,
                 to: recipient,
-                subject: subject, 
+                subject: reason, 
                 html: htmlToSend,
             };
             transporter.sendMail(mailOptions, (error, info) => {

@@ -44,7 +44,7 @@ function SearchForm({ flightData }) {
                     style={{
                         marginRight: "10px"
                     }}
-                    placeholder="Select a person"
+                    placeholder="Enter Flight Id"
                     filterOption={(input, option) =>
                         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                     }
@@ -52,7 +52,7 @@ function SearchForm({ flightData }) {
                 />
                 <Select
                     showSearch
-                    placeholder="Select a person"
+                    placeholder="Enter Flight Name"
                     filterOption={(input, option) =>
                         (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                     }

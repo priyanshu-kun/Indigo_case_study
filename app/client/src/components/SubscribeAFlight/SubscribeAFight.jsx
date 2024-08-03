@@ -18,6 +18,9 @@ const SubscribeAFlight = ({ isFlightLoading, flightData }) => {
             seconds,
         }
         subscribe(newPaylod)
+           setFlight_id("")
+           setEmail("")
+           alert("Please check your mail for realtime status.")
     };
 
     const flight_options = flightData?.message?.map((msg, idx) => (
@@ -65,6 +68,7 @@ const SubscribeAFlight = ({ isFlightLoading, flightData }) => {
                     (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
                 }
                 options={flight_options ? [...flight_options] : []}
+                value={flight_id}
             />
 
 
@@ -78,6 +82,7 @@ const SubscribeAFlight = ({ isFlightLoading, flightData }) => {
                         message: 'Please input your Email to get notifications!',
                     },
                 ]}
+                
             >
                 <Input onChange={(e) => setEmail(e.target.value)} value={email} />
             </Form.Item>
@@ -90,7 +95,7 @@ const SubscribeAFlight = ({ isFlightLoading, flightData }) => {
                     span: 16,
                 }}
             >
-                <Checkbox value={allowUpdation} onChange={(e) => setAllowUpdation(e.target.checked)}>Enable Notifications</Checkbox>
+                <Checkbox value={allowUpdation} onChange={(e) => setAllowUpdation(!e.target.checked)}>Disable Notifications</Checkbox>
             </Form.Item>
 
 
